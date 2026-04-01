@@ -32,6 +32,17 @@
   MIT license, all text above must be included in any redistribution
  **************************************************************************/
 
+// Last known pin layout
+// I2C 0.96" 80x160px
+// 1 - LEDA  - pin 1
+// 2 - GND   - gnd
+// 3 - RESET - pin 4
+// 4 - RS    - pin 2
+// 5 - SDA   - pin 11
+// 6 - SCL   - pin 9
+// 7 - VDD   - 3v3
+// 8 - CS    - pin 5
+
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
 // #include <Adafruit_ST7789.h>  // Hardware-specific library for ST7789
@@ -49,12 +60,13 @@ float p = 3.1415926;
 void setup(void)
 {
   ledcAttach(TFT_BL, 5000, 8); // pin, freq, resolution
-  ledcWrite(TFT_BL, 8);        // duty (0–255)
+  ledcWrite(TFT_BL, 127);      // duty (0–255)
 
   Serial.begin(9600);
   Serial.print(F("Hello! ST77xx TFT Test"));
 
   tft.initR(INITR_MINI160x80); // Init ST7735S mini display
+  tft.setRotation(1);
 
   // tft.setSPISpeed(40000000);
 
