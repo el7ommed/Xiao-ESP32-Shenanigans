@@ -62,7 +62,7 @@ void setup(void)
   Serial.print(F("Hello! ST77xx TFT Test"));
 
   tft.initR(INITR_MINI160x80); // Init ST7735S mini display
-  tft.setRotation(2);
+  tft.setRotation(1);
   ledcAttach(TFT_BL, 10000, 8); // pin, freq, resolution
   ledcWrite(TFT_BL, 127);       // duty (0–255)
 
@@ -73,6 +73,17 @@ void setup(void)
   // tft.setSPISpeed(40000000);
 
   Serial.println(F("Initialized"));
+
+  // Serial.println("done");
+  delay(1000);
+}
+
+void loop()
+{
+  // tft.invertDisplay(true);
+  // delay(500);
+  // tft.invertDisplay(false);
+  // delay(500);
 
   uint16_t time = millis();
   tft.fillScreen(ST77XX_BLACK);
@@ -120,17 +131,6 @@ void setup(void)
   delay(500);
 
   mediabuttons();
-  delay(500);
-
-  Serial.println("done");
-  delay(1000);
-}
-
-void loop()
-{
-  tft.invertDisplay(true);
-  delay(500);
-  tft.invertDisplay(false);
   delay(500);
 }
 
@@ -187,7 +187,7 @@ void testlines(uint16_t color)
 
 void testdrawtext(char *text, uint16_t color)
 {
-  tft.setCursor(0, 0);
+  tft.setCursor(5, 5);
   tft.setTextColor(color);
   tft.setTextWrap(true);
   tft.print(text);
