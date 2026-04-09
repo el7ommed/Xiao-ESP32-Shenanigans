@@ -1,8 +1,17 @@
 #ifndef SECRETS_EXAMPLE_H
 #define SECRETS_EXAMPLE_H
 
-// Copy to include/secrets.h (DO NOT commit)
-const char *ssid = "YOUR_SSID";
-const char *password = "YOUR_PASSWORD";
+struct WifiCred
+{
+    const char *ssid;
+    const char *pass;
+};
+
+static const WifiCred wifiCreds[] = {
+    {"SSID_1", "PASSWORD_1"},
+    {"SSID_2", "PASSWORD_2"},
+    {"SSID_3", "PASSWORD_3"}};
+
+static const size_t wifiCredsCount = sizeof(wifiCreds) / sizeof(wifiCreds[0]);
 
 #endif
